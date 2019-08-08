@@ -14,8 +14,7 @@ import (
 
 // Constants
 // 常量
-const htmlAbout = `Welcome on <b>Astilectron</b> demo!<br>
-This is using the bootstrap and the bundler.`
+const htmlAbout = `欢迎使用本示例，本示例演示的是如何使用go-astilection开发golang的桌面应用程序。`
 
 // Vars
 // 变量
@@ -70,7 +69,7 @@ func main() {
 		OnWait: func(_ *astilectron.Astilectron, ws []*astilectron.Window, _ *astilectron.Menu, _ *astilectron.Tray, _ *astilectron.Menu) error {
 			w = ws[0]
 			// 开发者工具
-			//			w.OpenDevTools()
+			// w.OpenDevTools()
 			return nil
 		},
 		RestoreAssets: RestoreAssets,

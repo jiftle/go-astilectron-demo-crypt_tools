@@ -36,31 +36,21 @@ let index = {
             }
         });
     },
-    btn_test: function(){
-        alert('1');
-
-        // Create message
-        let message = {"name": "index_btn_test"};
-        message.payload = "young girl ,lady"
-
-        // Send message
-        asticode.loader.show();
-        astilectron.sendMessage(message, function(message) {
-            // Init
-            asticode.loader.hide();
-            console.log("--> Hi,boss!")
-astilectron.showMessageBox({message: "My message", title: "My Title"})
-        })
-    },
     btn_crypt: function(){
+        // 为页面控件定义变量
         txtPlain =document.getElementById("txtPlain")
         txtKey =document.getElementById("txtKey")
         txtCipher =document.getElementById("txtCipher")
+
         var plain = txtPlain.value;
         var key = txtKey.value;
         s = "plain:" + plain + ", key:" + key 
         console.log(s)
 //        alert(s)
+
+
+        // 清空输入框
+        txtCipher.value = ""
 
         let params = {"plain":plain,"key":key}
         console.log(params)
@@ -70,7 +60,13 @@ astilectron.showMessageBox({message: "My message", title: "My Title"})
         astilectron.sendMessage(message, function(message) {
             console.log("--> Go语言执行完毕收到回调, 收到: " + message)
             console.log(message)
-            txtCipher.value = message.payload
+
+            var ret = message.payload
+            if(ret.ret == false){
+                alert(ret.message)
+                return 
+            }
+            txtCipher.value =ret.value
         })
     }
 };
